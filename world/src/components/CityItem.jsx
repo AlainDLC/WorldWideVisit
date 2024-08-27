@@ -23,18 +23,31 @@ export default function CityItem({ city }) {
   const { currentCity } = useCities();
   const { cityName, emoji, date, id, position } = city;
 
+  const { deleteCity } = useCities();
+
+  function handleCklick(e) {
+    e.preventDefault();
+    deleteCity(id);
+  }
+
   return (
     <li>
       <Link
         className={`${styles.cityItem} ${
-          id == currentCity.id ? styles["cityItem--active"] : ""
+          id === currentCity.id ? styles["cityItem--active"] : ""
         }  `}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}>{flagemojiToPNG(emoji)}</span>
         <h3 className={styles.name}>{cityName}</h3>
         <time className={styles.date}>{formatDate(date)}</time>
-        <button className={styles.deleteBtn}>&times; </button>
+        <button
+          type="button"
+          className={styles.deleteBtn}
+          onClick={handleCklick}
+        >
+          &times;
+        </button>
       </Link>
     </li>
   );

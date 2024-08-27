@@ -15,7 +15,6 @@ const formatDate = (date) =>
 
 const flagemojiToPNG = (flag) => {
   if (typeof flag !== "string" || flag.length === 0) {
-    console.error("Invalid flag input:", flag);
     return null; // Or handle this case as needed, e.g., returning a default image or nothing.
   }
 
