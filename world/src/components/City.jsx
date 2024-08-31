@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
 import { useCities } from "../contexts/CitiesContext";
@@ -33,11 +33,9 @@ function City() {
 
   const { cityName, emoji, date, notes, isLoading } = currentCity;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [id, getCity]);
 
   if (isLoading) return <Spinner />;
   return (
